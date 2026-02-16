@@ -24,7 +24,6 @@ use Spryker\Zed\MessageBrokerExtension\Dependency\Plugin\MessageHandlerPluginInt
  * @method \Spryker\Zed\PaymentApp\Business\PaymentAppFacadeInterface getFacade()
  * @method \Spryker\Zed\PaymentApp\Persistence\PaymentAppQueryContainerInterface getQueryContainer()
  * @method \Spryker\Zed\PaymentApp\PaymentAppConfig getConfig()
- * @method \Spryker\Zed\PaymentApp\Communication\PaymentAppCommunicationFactory getFactory()
  */
 class PaymentAppOperationsMessageHandlerPlugin extends AbstractPlugin implements MessageHandlerPluginInterface
 {
