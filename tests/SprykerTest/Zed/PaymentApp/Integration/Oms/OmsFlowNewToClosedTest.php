@@ -28,9 +28,6 @@ class OmsFlowNewToClosedTest extends Unit
 {
     protected PaymentAppIntegrationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testMoveAnItemFromNewToClosed(): void
     {
         // Arrange

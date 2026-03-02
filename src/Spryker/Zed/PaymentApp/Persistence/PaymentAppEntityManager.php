@@ -17,11 +17,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class PaymentAppEntityManager extends AbstractEntityManager implements PaymentAppEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer $paymentAppStatusUpdatedTransfer
-     *
-     * @return void
-     */
     public function persistPaymentAppPaymentStatus(PaymentAppStatusUpdatedTransfer $paymentAppStatusUpdatedTransfer): void
     {
         $paymentAppPaymentStatusQuery = $this->getFactory()->createPaymentAppPaymentStatusQuery();
@@ -33,11 +28,6 @@ class PaymentAppEntityManager extends AbstractEntityManager implements PaymentAp
         $paymentAppPaymentStatusEntity->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer $paymentAppStatusUpdatedTransfer
-     *
-     * @return void
-     */
     public function persistPaymentAppPaymentStatusHistory(PaymentAppStatusUpdatedTransfer $paymentAppStatusUpdatedTransfer): void
     {
         $paymentAppPaymentStatusHistoryEntity = $this->getFactory()->createPaymentAppPaymentStatusHistory();

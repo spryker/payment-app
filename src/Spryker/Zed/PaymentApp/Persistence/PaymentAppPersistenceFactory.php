@@ -22,25 +22,16 @@ use Spryker\Zed\PaymentApp\Persistence\Mapper\PaymentAppPaymentStatusMapper;
  */
 class PaymentAppPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\PaymentApp\Persistence\SpyPaymentAppPaymentStatusQuery
-     */
     public function createPaymentAppPaymentStatusQuery(): SpyPaymentAppPaymentStatusQuery
     {
         return SpyPaymentAppPaymentStatusQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\PaymentApp\Persistence\SpyPaymentAppPaymentStatusHistory
-     */
     public function createPaymentAppPaymentStatusHistory(): SpyPaymentAppPaymentStatusHistory
     {
         return new SpyPaymentAppPaymentStatusHistory();
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Persistence\Mapper\PaymentAppPaymentStatusMapper
-     */
     public function createPaymentAppPaymentStatusMapper(): PaymentAppPaymentStatusMapper
     {
         return new PaymentAppPaymentStatusMapper();

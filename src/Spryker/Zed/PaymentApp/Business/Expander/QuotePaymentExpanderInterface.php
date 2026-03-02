@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
 
 interface QuotePaymentExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function expandQuoteWithPayment(
         QuoteTransfer $quoteTransfer
     ): QuoteTransfer;

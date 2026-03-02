@@ -35,9 +35,6 @@ class GatewayControllerCustomerTest extends Unit
      */
     protected PaymentAppCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testGivenThePassedPaymentMethodDoesNotExistsWhenTheGetCustomerMethodIsCalledThenAFailedResponseIsReturned(): void
     {
         // Arrange
@@ -51,9 +48,6 @@ class GatewayControllerCustomerTest extends Unit
         $this->assertSame('Payment method not found', $paymentCustomerResponseTransfer->getError());
     }
 
-    /**
-     * @return void
-     */
     public function testGivenTheRequestCanBeMadeWhenTheResponseStatusCodeIsNot200ThenAFailedResponseIsReturned(): void
     {
         // Arrange
@@ -70,9 +64,6 @@ class GatewayControllerCustomerTest extends Unit
         $this->assertSame('something went wrong on th App side', $paymentCustomerResponseTransfer->getError());
     }
 
-    /**
-     * @return void
-     */
     public function testGivenTheRequestCanBeMadeWhenTheResponseDoesNotContainValidJsonThenAFailedResponseIsReturned(): void
     {
         // Arrange
@@ -89,9 +80,6 @@ class GatewayControllerCustomerTest extends Unit
         $this->assertSame('something went wrong on th App side', $paymentCustomerResponseTransfer->getError());
     }
 
-    /**
-     * @return void
-     */
     public function testGivenTheRequestCanBeMadeWhenTheResponseIsSuccessfulThenASuccessfulResponseIsReturned(): void
     {
         // Arrange
@@ -133,9 +121,6 @@ class GatewayControllerCustomerTest extends Unit
         $this->assertInstanceOf(AddressTransfer::class, $customerTransfer->getBillingAddress()[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testGivenThePassedPaymentMethodInTheRequestDoesNotHaveAGetCustomerEndpointWhenTheGetCustomerMethodIsCalledThenAnExceptionIsThrown(): void
     {
         // Arrange
@@ -150,9 +135,6 @@ class GatewayControllerCustomerTest extends Unit
         $this->tester->getFacade()->getCustomer($paymentCustomerRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGetCustomerThrowsAnExceptionWhenThePaymentIsNotSet(): void
     {
         // Arrange
@@ -167,9 +149,6 @@ class GatewayControllerCustomerTest extends Unit
         $gatewayController->getCustomerAction($paymentCustomerRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGetCustomerThrowsAnExceptionWhenThePaymentProviderNameIsNotSet(): void
     {
         // Arrange
@@ -188,9 +167,6 @@ class GatewayControllerCustomerTest extends Unit
         $gatewayController->getCustomerAction($paymentCustomerRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGetCustomerThrowsAnExceptionWhenThePaymentMethodNameIsNotSet(): void
     {
         // Arrange

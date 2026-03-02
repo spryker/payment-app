@@ -25,11 +25,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PaymentCustomer implements PaymentCustomerInterface
 {
-    /**
-     * @param \Spryker\Zed\PaymentApp\Dependency\Facade\PaymentAppToPaymentFacadeInterface $paymentFacade
-     * @param \Spryker\Zed\PaymentApp\Dependency\Facade\PaymentAppToKernelAppFacadeInterface $kernelAppFacade
-     * @param \Spryker\Zed\PaymentApp\Dependency\Service\PaymentAppToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         protected PaymentAppToPaymentFacadeInterface $paymentFacade,
         protected PaymentAppToKernelAppFacadeInterface $kernelAppFacade,
@@ -37,11 +32,6 @@ class PaymentCustomer implements PaymentCustomerInterface
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCustomerRequestTransfer $paymentCustomerRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentCustomerResponseTransfer
-     */
     public function getCustomer(
         PaymentCustomerRequestTransfer $paymentCustomerRequestTransfer
     ): PaymentCustomerResponseTransfer {
@@ -119,11 +109,6 @@ class PaymentCustomer implements PaymentCustomerInterface
         return $paymentCustomerResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCustomerRequestTransfer $paymentCustomerRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentMethodTransfer
-     */
     protected function getPaymentMethodTransferFromRequestTransfer(
         PaymentCustomerRequestTransfer $paymentCustomerRequestTransfer
     ): PaymentMethodTransfer {

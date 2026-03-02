@@ -15,18 +15,10 @@ use Spryker\Zed\PaymentApp\Persistence\PaymentAppRepositoryInterface;
 
 class PaymentAppPaymentStatusReader implements PaymentAppPaymentStatusReaderInterface
 {
-    /**
-     * @param \Spryker\Zed\PaymentApp\Persistence\PaymentAppRepositoryInterface $paymentAppRepository
-     */
     public function __construct(protected PaymentAppRepositoryInterface $paymentAppRepository)
     {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAppPaymentStatusCriteriaTransfer $paymentAppPaymentStatusCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppPaymentStatusCollectionTransfer
-     */
     public function getPaymentAppPaymentStatusCollection(
         PaymentAppPaymentStatusCriteriaTransfer $paymentAppPaymentStatusCriteriaTransfer
     ): PaymentAppPaymentStatusCollectionTransfer {

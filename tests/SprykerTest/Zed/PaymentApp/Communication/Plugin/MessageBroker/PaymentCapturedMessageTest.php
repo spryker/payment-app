@@ -32,9 +32,6 @@ class PaymentCapturedMessageTest extends Unit
 {
     protected PaymentAppCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testGivenNoStatusEntityForAPaymentExistsWhenThePaymentCapturedMessageIsHandledThenAStatusEntityIsCreated(): void
     {
         // Arrange
@@ -47,9 +44,6 @@ class PaymentCapturedMessageTest extends Unit
         $this->tester->assertPaymentAppPaymentStatusEntityExists($orderReference, PaymentStatus::STATUS_CAPTURED);
     }
 
-    /**
-     * @return void
-     */
     public function testGivenAStatusEntityForAPaymentExistsWhenThePaymentCapturedMessageIsHandledThenTheStatusEntityIsUpdated(): void
     {
         // Arrange
@@ -63,9 +57,6 @@ class PaymentCapturedMessageTest extends Unit
         $this->tester->assertPaymentAppPaymentStatusEntityExists($orderReference, PaymentStatus::STATUS_CAPTURED);
     }
 
-    /**
-     * @return void
-     */
     public function testGivenNoStatusEntityForAPaymentExistsWhenThePaymentCapturedMessageIsHandledThenAStatusHistoryEntityIsCreated(): void
     {
         // Arrange

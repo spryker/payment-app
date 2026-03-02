@@ -28,9 +28,6 @@ class OmsFlowNewToPaymentAuthorizationCanceledToCanceledTest extends Unit
 {
     protected PaymentAppIntegrationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testMoveAnItemFromNewToPaymentAuthorizationCanceledToCanceled(): void
     {
         $this->tester->haveOrderItemInState(SalesPaymentHelper::STATE_NEW);

@@ -44,11 +44,6 @@ class PaymentAppDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const PLUGINS_EXPRESS_CHECKOUT_PAYMENT_REQUEST_PROCESSOR = 'PLUGINS_EXPRESS_CHECKOUT_PAYMENT_REQUEST_PROCESSOR';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addPaymentFacade($container);
@@ -60,11 +55,6 @@ class PaymentAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addPaymentFacade(Container $container): Container
     {
         $container->set(static::FACADE_PAYMENT, function (Container $container) {
@@ -74,11 +64,6 @@ class PaymentAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCartFacade(Container $container): Container
     {
         $container->set(static::FACADE_CART, function (Container $container) {
@@ -88,11 +73,6 @@ class PaymentAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addKernelAppFacade(Container $container): Container
     {
         $container->set(static::FACADE_KERNEL_APP, function (Container $container) {
@@ -102,11 +82,6 @@ class PaymentAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUtilEncodingService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
@@ -116,11 +91,6 @@ class PaymentAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addExpressCheckoutPaymentRequestProcessorPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_EXPRESS_CHECKOUT_PAYMENT_REQUEST_PROCESSOR, function () {

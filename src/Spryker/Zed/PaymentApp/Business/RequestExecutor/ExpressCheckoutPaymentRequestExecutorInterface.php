@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\ExpressCheckoutPaymentResponseTransfer;
 
 interface ExpressCheckoutPaymentRequestExecutorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ExpressCheckoutPaymentResponseTransfer
-     */
     public function processExpressCheckoutPaymentRequest(
         ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
     ): ExpressCheckoutPaymentResponseTransfer;

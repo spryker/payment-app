@@ -31,10 +31,6 @@ class PreOrderPayment implements PreOrderPaymentInterface
      */
     protected ExpressCheckoutPaymentRequestExecutorInterface $expressCheckoutPaymentRequestExecutor;
 
-    /**
-     * @param \Spryker\Zed\PaymentApp\Dependency\Facade\PaymentAppToPaymentFacadeInterface $paymentFacade
-     * @param \Spryker\Zed\PaymentApp\Business\RequestExecutor\ExpressCheckoutPaymentRequestExecutorInterface $expressCheckoutPaymentRequestExecutor
-     */
     public function __construct(
         PaymentAppToPaymentFacadeInterface $paymentFacade,
         ExpressCheckoutPaymentRequestExecutorInterface $expressCheckoutPaymentRequestExecutor
@@ -43,11 +39,6 @@ class PreOrderPayment implements PreOrderPaymentInterface
         $this->expressCheckoutPaymentRequestExecutor = $expressCheckoutPaymentRequestExecutor;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PreOrderPaymentRequestTransfer $preOrderPaymentRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PreOrderPaymentResponseTransfer
-     */
     public function initializePreOrderPayment(
         PreOrderPaymentRequestTransfer $preOrderPaymentRequestTransfer
     ): PreOrderPaymentResponseTransfer {
@@ -87,11 +78,6 @@ class PreOrderPayment implements PreOrderPaymentInterface
         return $this->paymentFacade->initializePreOrderPayment($preOrderPaymentRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ExpressCheckoutPaymentResponseTransfer $expressCheckoutPaymentResponseTransfer
-     *
-     * @return string
-     */
     protected function getErrorMessageFromCheckoutPaymentRequestTransfer(ExpressCheckoutPaymentResponseTransfer $expressCheckoutPaymentResponseTransfer): string
     {
         $errorMessages = [];
@@ -104,12 +90,6 @@ class PreOrderPayment implements PreOrderPaymentInterface
         return implode(', ', $errorMessages);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
-     *
-     * @return void
-     */
     public function confirmPreOrderPayment(
         QuoteTransfer $quoteTransfer,
         CheckoutResponseTransfer $checkoutResponseTransfer
@@ -117,11 +97,6 @@ class PreOrderPayment implements PreOrderPaymentInterface
         $this->paymentFacade->confirmPreOrderPayment($quoteTransfer, $checkoutResponseTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PreOrderPaymentRequestTransfer $preOrderPaymentRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PreOrderPaymentResponseTransfer
-     */
     public function cancelPreOrderPayment(
         PreOrderPaymentRequestTransfer $preOrderPaymentRequestTransfer
     ): PreOrderPaymentResponseTransfer {

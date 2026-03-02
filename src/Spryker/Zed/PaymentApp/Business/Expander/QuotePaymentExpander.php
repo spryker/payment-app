@@ -18,19 +18,11 @@ class QuotePaymentExpander implements QuotePaymentExpanderInterface
      */
     protected PaymentAppToPaymentFacadeInterface $paymentFacade;
 
-    /**
-     * @param \Spryker\Zed\PaymentApp\Dependency\Facade\PaymentAppToPaymentFacadeInterface $paymentFacade
-     */
     public function __construct(PaymentAppToPaymentFacadeInterface $paymentFacade)
     {
         $this->paymentFacade = $paymentFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function expandQuoteWithPayment(
         QuoteTransfer $quoteTransfer
     ): QuoteTransfer {

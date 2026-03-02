@@ -32,9 +32,6 @@ class PaymentAuthorizationFailedMessageTest extends Unit
 {
     protected PaymentAppCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testGivenNoStatusEntityForAPaymentExistsWhenThePaymentAuthorizationFailedMessageIsHandledThenAStatusEntityIsCreated(): void
     {
         // Arrange
@@ -47,9 +44,6 @@ class PaymentAuthorizationFailedMessageTest extends Unit
         $this->tester->assertPaymentAppPaymentStatusEntityExists($orderReference, PaymentStatus::STATUS_AUTHORIZATION_FAILED);
     }
 
-    /**
-     * @return void
-     */
     public function testGivenAStatusEntityForAPaymentExistsWhenThePaymentAuthorizationFailedMessageIsHandledThenTheStatusEntityIsUpdated(): void
     {
         // Arrange
@@ -63,9 +57,6 @@ class PaymentAuthorizationFailedMessageTest extends Unit
         $this->tester->assertPaymentAppPaymentStatusEntityExists($orderReference, PaymentStatus::STATUS_AUTHORIZATION_FAILED);
     }
 
-    /**
-     * @return void
-     */
     public function testGivenNoStatusEntityForAPaymentExistsWhenThePaymentAuthorizationFailedMessageIsHandledThenAStatusHistoryEntityIsCreated(): void
     {
         // Arrange

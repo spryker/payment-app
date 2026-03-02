@@ -28,9 +28,6 @@ class OmsConditionTest extends Unit
 {
     protected PaymentAppIntegrationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testItemInStatePaymentPendingStaysInPaymentPendingWhenThePaymentAppStatusIsNotSet(): void
     {
         // Arrange
@@ -43,9 +40,6 @@ class OmsConditionTest extends Unit
         $this->tester->assertOrderItemIsInState(SalesPaymentHelper::STATE_PAYMENT_PENDING);
     }
 
-    /**
-     * @return void
-     */
     public function testItemInStatePaymentPendingIsTransitionedToPaymentAuthorizationFailedWhenThePaymentAppStatusIsAuthorizationFailed(): void
     {
         // Arrange
@@ -78,9 +72,6 @@ class OmsConditionTest extends Unit
         $this->tester->assertOrderItemIsInState(SalesPaymentHelper::STATE_PAYMENT_AUTHORIZED);
     }
 
-    /**
-     * @return void
-     */
     public function testItemInStatePaymentAuthorizationFailedIsTransitionedToPaymentAuthorizedWhenThePaymentAppStatusIsAuthorized(): void
     {
         // Arrange

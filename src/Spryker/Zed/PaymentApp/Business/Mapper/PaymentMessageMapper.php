@@ -46,11 +46,6 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         };
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAuthorizedTransfer $paymentAuthorizedTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     protected function mapPaymentAuthorizedToPaymentStatusUpdatedTransfer(
         PaymentAuthorizedTransfer $paymentAuthorizedTransfer
     ): PaymentAppStatusUpdatedTransfer {
@@ -60,11 +55,6 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAuthorizationFailedTransfer $paymentAuthorizationFailedTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     protected function mapPaymentAuthorizationFailedToPaymentStatusUpdatedTransfer(
         PaymentAuthorizationFailedTransfer $paymentAuthorizationFailedTransfer
     ): PaymentAppStatusUpdatedTransfer {
@@ -74,11 +64,6 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCapturedTransfer $paymentCapturedTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     protected function mapPaymentCapturedToPaymentStatusUpdatedTransfer(
         PaymentCapturedTransfer $paymentCapturedTransfer
     ): PaymentAppStatusUpdatedTransfer {
@@ -88,11 +73,6 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCaptureFailedTransfer $paymentCaptureFailedTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     protected function mapPaymentCaptureFailedToPaymentStatusUpdatedTransfer(
         PaymentCaptureFailedTransfer $paymentCaptureFailedTransfer
     ): PaymentAppStatusUpdatedTransfer {
@@ -102,11 +82,6 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCanceledTransfer $paymentCanceledTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     protected function mapPaymentCanceledToPaymentStatusUpdatedTransfer(
         PaymentCanceledTransfer $paymentCanceledTransfer
     ): PaymentAppStatusUpdatedTransfer {
@@ -116,11 +91,6 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCancellationFailedTransfer $paymentCancellationFailedTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     protected function mapPaymentCancellationFailedToPaymentStatusUpdatedTransfer(
         PaymentCancellationFailedTransfer $paymentCancellationFailedTransfer
     ): PaymentAppStatusUpdatedTransfer {
@@ -130,11 +100,6 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentOverpaidTransfer $paymentOverpaidTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     protected function mapPaymentOverpaidToPaymentStatusUpdatedTransfer(
         PaymentOverpaidTransfer $paymentOverpaidTransfer
     ): PaymentAppStatusUpdatedTransfer {
@@ -144,11 +109,6 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentUnderpaidTransfer $paymentUnderpaidTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     protected function mapPaymentUnderpaidToPaymentStatusUpdatedTransfer(
         PaymentUnderpaidTransfer $paymentUnderpaidTransfer
     ): PaymentAppStatusUpdatedTransfer {
@@ -158,12 +118,6 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         );
     }
 
-    /**
-     * @param string $orderReference
-     * @param string $paymentStatus
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     protected function createPaymentAppStatusUpdatedTransfer(string $orderReference, string $paymentStatus): PaymentAppStatusUpdatedTransfer
     {
         $paymentAppStatusUpdatedTransfer = new PaymentAppStatusUpdatedTransfer();

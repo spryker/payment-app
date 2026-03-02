@@ -28,9 +28,6 @@ class OmsFlowNewToPaymentCancelToCancellationFailedTest extends Unit
 {
     protected PaymentAppIntegrationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testMoveAnItemFromNewToPaymentCancelToCancellationFailed(): void
     {
         $this->tester->haveOrderItemInState(SalesPaymentHelper::STATE_NEW);

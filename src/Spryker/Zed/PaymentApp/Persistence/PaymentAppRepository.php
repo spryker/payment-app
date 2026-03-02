@@ -19,11 +19,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
  */
 class PaymentAppRepository extends AbstractRepository implements PaymentAppRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAppPaymentStatusCriteriaTransfer $paymentAppPaymentStatusCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppPaymentStatusCollectionTransfer
-     */
     public function getPaymentAppPaymentStatusCollection(
         PaymentAppPaymentStatusCriteriaTransfer $paymentAppPaymentStatusCriteriaTransfer
     ): PaymentAppPaymentStatusCollectionTransfer {
@@ -35,12 +30,6 @@ class PaymentAppRepository extends AbstractRepository implements PaymentAppRepos
         return $this->getFactory()->createPaymentAppPaymentStatusMapper()->mapPaymentAppPaymentStatusEntityCollectionToTransferCollection($paymentAppPaymentStatusEntityCollection, new PaymentAppPaymentStatusCollectionTransfer());
     }
 
-    /**
-     * @param \Orm\Zed\PaymentApp\Persistence\SpyPaymentAppPaymentStatusQuery $paymentAppPaymentStatusQuery
-     * @param \Generated\Shared\Transfer\PaymentAppPaymentStatusCriteriaTransfer $paymentAppPaymentStatusCriteriaTransfer
-     *
-     * @return \Orm\Zed\PaymentApp\Persistence\SpyPaymentAppPaymentStatusQuery
-     */
     protected function applyPaymentAppPaymentStatusCriteria(
         SpyPaymentAppPaymentStatusQuery $paymentAppPaymentStatusQuery,
         PaymentAppPaymentStatusCriteriaTransfer $paymentAppPaymentStatusCriteriaTransfer

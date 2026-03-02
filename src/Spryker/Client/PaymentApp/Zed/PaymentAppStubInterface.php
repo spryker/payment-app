@@ -16,11 +16,6 @@ use Generated\Shared\Transfer\PreOrderPaymentResponseTransfer;
 
 interface PaymentAppStubInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ExpressCheckoutPaymentResponseTransfer
-     */
     public function processExpressCheckoutPaymentRequest(
         ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
     ): ExpressCheckoutPaymentResponseTransfer;

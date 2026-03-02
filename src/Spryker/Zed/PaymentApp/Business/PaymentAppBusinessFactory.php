@@ -39,17 +39,11 @@ use Spryker\Zed\PaymentApp\PaymentAppDependencyProvider;
  */
 class PaymentAppBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\PaymentApp\Business\PreOrderPayment\PreOrderPaymentInterface
-     */
     public function createPreOrderPayment(): PreOrderPaymentInterface
     {
         return new PreOrderPayment($this->getPaymentFacade(), $this->createExpressCheckoutPaymentRequestExecutor());
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Business\RequestExecutor\ExpressCheckoutPaymentRequestExecutorInterface
-     */
     public function createExpressCheckoutPaymentRequestExecutor(): ExpressCheckoutPaymentRequestExecutorInterface
     {
         return new ExpressCheckoutPaymentRequestExecutor(
@@ -59,41 +53,26 @@ class PaymentAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Business\Expander\QuotePaymentExpanderInterface
-     */
     public function createQuotePaymentExpander(): QuotePaymentExpanderInterface
     {
         return new QuotePaymentExpander($this->getPaymentFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Dependency\Facade\PaymentAppToPaymentFacadeInterface
-     */
     public function getPaymentFacade(): PaymentAppToPaymentFacadeInterface
     {
         return $this->getProvidedDependency(PaymentAppDependencyProvider::FACADE_PAYMENT);
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Dependency\Facade\PaymentAppToKernelAppFacadeInterface
-     */
     public function getKernelAppFacade(): PaymentAppToKernelAppFacadeInterface
     {
         return $this->getProvidedDependency(PaymentAppDependencyProvider::FACADE_KERNEL_APP);
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Dependency\Facade\PaymentAppToCartFacadeInterface
-     */
     public function getCartFacade(): PaymentAppToCartFacadeInterface
     {
         return $this->getProvidedDependency(PaymentAppDependencyProvider::FACADE_CART);
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Dependency\Service\PaymentAppToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): PaymentAppToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(PaymentAppDependencyProvider::SERVICE_UTIL_ENCODING);
@@ -107,9 +86,6 @@ class PaymentAppBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(PaymentAppDependencyProvider::PLUGINS_EXPRESS_CHECKOUT_PAYMENT_REQUEST_PROCESSOR);
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Business\Customer\PaymentCustomerInterface
-     */
     public function createPaymentCustomer(): PaymentCustomerInterface
     {
         return new PaymentCustomer(
@@ -119,9 +95,6 @@ class PaymentAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Business\Status\PaymentAppPaymentStatusInterface
-     */
     public function createPaymentAppPaymentStatus(): PaymentAppPaymentStatusInterface
     {
         return new PaymentAppPaymentStatus(
@@ -132,25 +105,16 @@ class PaymentAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Business\Reader\PaymentAppPaymentStatusReaderInterface
-     */
     public function createPaymentAppPaymentStatusReader(): PaymentAppPaymentStatusReaderInterface
     {
         return new PaymentAppPaymentStatusReader($this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Business\Writer\PaymentAppPaymentStatusWriterInterface
-     */
     public function createPaymentAppPaymentStatusWriter(): PaymentAppPaymentStatusWriterInterface
     {
         return new PaymentAppPaymentStatusWriter($this->getEntityManager());
     }
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Business\Mapper\PaymentMessageMapperInterface
-     */
     public function createPaymentMessageMapper(): PaymentMessageMapperInterface
     {
         return new PaymentMessageMapper();

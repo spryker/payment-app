@@ -16,12 +16,6 @@ use Propel\Runtime\Collection\Collection;
 
 class PaymentAppPaymentStatusMapper
 {
-    /**
-     * @param \Propel\Runtime\Collection\Collection $paymentAppPaymentStatusEntityCollection
-     * @param \Generated\Shared\Transfer\PaymentAppPaymentStatusCollectionTransfer $paymentAppPaymentStatusCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppPaymentStatusCollectionTransfer
-     */
     public function mapPaymentAppPaymentStatusEntityCollectionToTransferCollection(
         Collection $paymentAppPaymentStatusEntityCollection,
         PaymentAppPaymentStatusCollectionTransfer $paymentAppPaymentStatusCollectionTransfer
@@ -35,12 +29,6 @@ class PaymentAppPaymentStatusMapper
         return $paymentAppPaymentStatusCollectionTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\PaymentApp\Persistence\Base\SpyPaymentAppPaymentStatus $paymentAppPaymentStatusEntity
-     * @param \Generated\Shared\Transfer\PaymentAppPaymentStatusTransfer $paymentAppPaymentStatusTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppPaymentStatusTransfer
-     */
     protected function mapPaymentAppPaymentStatusEntityToTransfer(
         SpyPaymentAppPaymentStatus $paymentAppPaymentStatusEntity,
         PaymentAppPaymentStatusTransfer $paymentAppPaymentStatusTransfer

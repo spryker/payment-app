@@ -32,11 +32,6 @@ class PaymentAppMessageHelper extends Module
 
     protected string $transactionReference;
 
-    /**
-     * @param \Codeception\TestInterface $test
-     *
-     * @return void
-     */
     public function _before(TestInterface $test): void
     {
         parent::_before($test);
@@ -47,11 +42,6 @@ class PaymentAppMessageHelper extends Module
         $this->getSalesOmsHelper()->haveOrderItemInState(PaymentStatus::STATUS_NEW);
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return void
-     */
     public function receivePaymentCanceledMessage(array $seed = []): void
     {
         $seed = $this->addDefaultDataToSeed($seed);
@@ -65,11 +55,6 @@ class PaymentAppMessageHelper extends Module
         $this->getAsyncApiHelper()->runMessageReceiveTest($paymentCanceledTransfer, 'payment-events');
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return void
-     */
     public function receivePaymentCancellationFailedMessage(array $seed = []): void
     {
         $seed = $this->addDefaultDataToSeed($seed);
@@ -83,11 +68,6 @@ class PaymentAppMessageHelper extends Module
         $this->getAsyncApiHelper()->runMessageReceiveTest($cancellationFailedTransfer, 'payment-events');
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return void
-     */
     public function receivePaymentCapturedMessage(array $seed = []): void
     {
         $seed = $this->addDefaultDataToSeed($seed);
@@ -101,11 +81,6 @@ class PaymentAppMessageHelper extends Module
         $this->getAsyncApiHelper()->runMessageReceiveTest($paymentCapturedTransfer, 'payment-events');
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return void
-     */
     public function receivePaymentCaptureFailedMessage(array $seed = []): void
     {
         $seed = $this->addDefaultDataToSeed($seed);
@@ -119,11 +94,6 @@ class PaymentAppMessageHelper extends Module
         $this->getAsyncApiHelper()->runMessageReceiveTest($paymentCaptureFailedTransfer, 'payment-events');
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return void
-     */
     public function receivePaymentAuthorizedMessage(array $seed = []): void
     {
         $seed = $this->addDefaultDataToSeed($seed);
@@ -137,11 +107,6 @@ class PaymentAppMessageHelper extends Module
         $this->getAsyncApiHelper()->runMessageReceiveTest($paymentAuthorizedTransfer, 'payment-events');
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return void
-     */
     public function receivePaymentAuthorizationFailedMessage(array $seed = []): void
     {
         $seed = $this->addDefaultDataToSeed($seed);
@@ -155,11 +120,6 @@ class PaymentAppMessageHelper extends Module
         $this->getAsyncApiHelper()->runMessageReceiveTest($authorizationFailedTransfer, 'payment-events');
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return void
-     */
     public function receivePaymentOverpaidMessage(array $seed = []): void
     {
         $seed = $this->addDefaultDataToSeed($seed);
@@ -173,11 +133,6 @@ class PaymentAppMessageHelper extends Module
         $this->getAsyncApiHelper()->runMessageReceiveTest($paymentOverpaidTransfer, 'payment-events');
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return void
-     */
     public function receivePaymentUnderpaidMessage(array $seed = []): void
     {
         $seed = $this->addDefaultDataToSeed($seed);
@@ -191,11 +146,6 @@ class PaymentAppMessageHelper extends Module
         $this->getAsyncApiHelper()->runMessageReceiveTest($paymentUnderpaidTransfer, 'payment-events');
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return array
-     */
     protected function addDefaultDataToSeed(array $seed = []): array
     {
         return array_merge($seed, [

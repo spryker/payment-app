@@ -34,9 +34,6 @@ class GatewayControllerInitializePreOrderPaymentTest extends Unit
      */
     protected PaymentAppCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testGivenPreOrderPaymentRequestTransferWithoutQuoteWhenTheInitializePreOrderPaymentActionIsCalledThenAnExceptionIsThrown(): void
     {
         // Arrange
@@ -50,9 +47,6 @@ class GatewayControllerInitializePreOrderPaymentTest extends Unit
         $this->tester->getGatewayController()->initializePreOrderPaymentAction($preOrderPaymentRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGivenValidPreOrderPaymentRequestTransferWhenTheInitializePreOrderPaymentActionIsCalledAndTheProcessExpressCheckoutPaymentRequestReturnsErrorsThenAFailedResponseWithAnErrorMessageIsReturned(): void
     {
         // Arrange

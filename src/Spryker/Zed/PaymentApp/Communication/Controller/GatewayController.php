@@ -21,44 +21,24 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
  */
 class GatewayController extends AbstractGatewayController
 {
-    /**
-     * @param \Generated\Shared\Transfer\ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ExpressCheckoutPaymentResponseTransfer
-     */
     public function processExpressCheckoutPaymentRequestAction(
         ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
     ): ExpressCheckoutPaymentResponseTransfer {
         return $this->getFacade()->processExpressCheckoutPaymentRequest($expressCheckoutPaymentRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentCustomerRequestTransfer $paymentCustomerRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentCustomerResponseTransfer
-     */
     public function getCustomerAction(
         PaymentCustomerRequestTransfer $paymentCustomerRequestTransfer
     ): PaymentCustomerResponseTransfer {
         return $this->getFacade()->getCustomer($paymentCustomerRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PreOrderPaymentRequestTransfer $preOrderPaymentRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PreOrderPaymentResponseTransfer
-     */
     public function initializePreOrderPaymentAction(
         PreOrderPaymentRequestTransfer $preOrderPaymentRequestTransfer
     ): PreOrderPaymentResponseTransfer {
         return $this->getFacade()->initializePreOrderPayment($preOrderPaymentRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PreOrderPaymentRequestTransfer $preOrderPaymentRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PreOrderPaymentResponseTransfer
-     */
     public function cancelPreOrderPaymentAction(
         PreOrderPaymentRequestTransfer $preOrderPaymentRequestTransfer
     ): PreOrderPaymentResponseTransfer {

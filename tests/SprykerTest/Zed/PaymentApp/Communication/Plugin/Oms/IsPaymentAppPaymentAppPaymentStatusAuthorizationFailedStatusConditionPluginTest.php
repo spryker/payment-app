@@ -49,9 +49,6 @@ class IsPaymentAppPaymentAppPaymentStatusAuthorizationFailedStatusConditionPlugi
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
     protected function getConditionPluginToTest(): ConditionInterface
     {
         return new IsPaymentAppPaymentStatusAuthorizationFailedConditionPlugin();

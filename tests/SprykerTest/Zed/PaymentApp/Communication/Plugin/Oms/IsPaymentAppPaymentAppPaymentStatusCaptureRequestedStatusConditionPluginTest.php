@@ -49,9 +49,6 @@ class IsPaymentAppPaymentAppPaymentStatusCaptureRequestedStatusConditionPluginTe
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
     protected function getConditionPluginToTest(): ConditionInterface
     {
         return new IsPaymentAppPaymentStatusCaptureRequestedConditionPlugin();

@@ -46,9 +46,6 @@ class IsPaymentAppPaymentAppPaymentStatusAuthorizedStatusConditionPluginTest ext
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
     protected function getConditionPluginToTest(): ConditionInterface
     {
         return new IsPaymentAppPaymentStatusAuthorizedConditionPlugin();

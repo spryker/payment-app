@@ -35,9 +35,6 @@ class PaymentAppCommunicationTester extends Actor
 {
     use _generated\PaymentAppCommunicationTesterActions;
 
-    /**
-     * @return \Spryker\Zed\PaymentApp\Communication\Controller\GatewayController
-     */
     public function getGatewayController(): GatewayController
     {
         return Stub::make(GatewayController::class, [

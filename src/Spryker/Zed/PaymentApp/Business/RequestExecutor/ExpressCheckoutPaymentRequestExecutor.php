@@ -46,11 +46,6 @@ class ExpressCheckoutPaymentRequestExecutor implements ExpressCheckoutPaymentReq
         $this->quotePaymentExpander = $quotePaymentExpander;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ExpressCheckoutPaymentResponseTransfer
-     */
     public function processExpressCheckoutPaymentRequest(
         ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
     ): ExpressCheckoutPaymentResponseTransfer {
@@ -74,11 +69,6 @@ class ExpressCheckoutPaymentRequestExecutor implements ExpressCheckoutPaymentReq
         return $expressCheckoutPaymentResponseTransfer->setQuote($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ExpressCheckoutPaymentResponseTransfer
-     */
     protected function executeExpressCheckoutPaymentRequestProcessorPlugins(
         ExpressCheckoutPaymentRequestTransfer $expressCheckoutPaymentRequestTransfer
     ): ExpressCheckoutPaymentResponseTransfer {
@@ -99,12 +89,6 @@ class ExpressCheckoutPaymentRequestExecutor implements ExpressCheckoutPaymentReq
         return $expressCheckoutPaymentResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteResponseTransfer $quoteResponseTransfer
-     * @param \Generated\Shared\Transfer\ExpressCheckoutPaymentResponseTransfer $expressCheckoutPaymentResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ExpressCheckoutPaymentResponseTransfer
-     */
     protected function addQuoteErrors(
         QuoteResponseTransfer $quoteResponseTransfer,
         ExpressCheckoutPaymentResponseTransfer $expressCheckoutPaymentResponseTransfer

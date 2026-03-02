@@ -39,9 +39,6 @@ class PaymentAppHelper extends Module
     use PaymentDataHelperTrait;
     use DependencyHelperTrait;
 
-    /**
-     * @return \Generated\Shared\Transfer\PaymentMethodTransfer
-     */
     public function havePaymentMethodWithoutPaymentMethodAppConfigurationPersisted(): PaymentMethodTransfer
     {
         $seedData = $this->getDefaultPaymentMethodSeedData();
@@ -49,11 +46,6 @@ class PaymentAppHelper extends Module
         return $this->getPaymentDataHelper()->havePaymentMethodWithPaymentProviderPersisted($seedData);
     }
 
-    /**
-     * @param array $paymentMethodAppConfigurationSeed
-     *
-     * @return \Generated\Shared\Transfer\PaymentMethodTransfer
-     */
     public function havePaymentMethodWithPaymentMethodAppConfigurationPersisted(array $paymentMethodAppConfigurationSeed = []): PaymentMethodTransfer
     {
         $seedData = $this->getDefaultPaymentMethodSeedData();
@@ -62,9 +54,6 @@ class PaymentAppHelper extends Module
         return $this->getPaymentDataHelper()->havePaymentMethodWithPaymentProviderPersisted($seedData);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PaymentMethodTransfer
-     */
     public function havePaymentMethodWithPaymentMethodAppConfigurationForCustomerEndpointPersisted(): PaymentMethodTransfer
     {
         $seedData = $this->getDefaultPaymentMethodSeedData();
@@ -83,9 +72,6 @@ class PaymentAppHelper extends Module
         return $this->getPaymentDataHelper()->havePaymentMethodWithPaymentProviderPersisted($seedData);
     }
 
-    /**
-     * @return array
-     */
     protected function getDefaultPaymentMethodSeedData(): array
     {
         $paymentMethodName = 'method-' . Uuid::uuid4()->toString();
@@ -103,11 +89,6 @@ class PaymentAppHelper extends Module
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentMethodTransfer|null $paymentMethodTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentCustomerRequestTransfer
-     */
     public function havePaymentCustomerRequestTransfer(?PaymentMethodTransfer $paymentMethodTransfer = null): PaymentCustomerRequestTransfer
     {
         $paymentMethodName = $this->getPaymentMethodName($paymentMethodTransfer);
@@ -128,11 +109,6 @@ class PaymentAppHelper extends Module
         return $paymentCustomerRequestTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentMethodTransfer|null $paymentMethodTransfer
-     *
-     * @return string
-     */
     protected function getPaymentMethodName(?PaymentMethodTransfer $paymentMethodTransfer = null): string
     {
         if ($paymentMethodTransfer && $paymentMethodTransfer->getName()) {
@@ -142,11 +118,6 @@ class PaymentAppHelper extends Module
         return 'method-' . Uuid::uuid4()->toString();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentMethodTransfer|null $paymentMethodTransfer
-     *
-     * @return string
-     */
     protected function getPaymentProviderName(?PaymentMethodTransfer $paymentMethodTransfer = null): string
     {
         if ($paymentMethodTransfer && $paymentMethodTransfer->getPaymentProvider() && $paymentMethodTransfer->getPaymentProvider()->getName()) {
@@ -156,17 +127,11 @@ class PaymentAppHelper extends Module
         return 'provider-' . Uuid::uuid4()->toString();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PreOrderPaymentRequestTransfer
-     */
     public function havePreOrderPaymentRequestTransferWithoutQuote(): PreOrderPaymentRequestTransfer
     {
         return new PreOrderPaymentRequestTransfer();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PreOrderPaymentRequestTransfer
-     */
     public function havePreOrderPaymentRequestTransferWithQuote(): PreOrderPaymentRequestTransfer
     {
         $quoteBuilder = new QuoteBuilder();
@@ -178,12 +143,6 @@ class PaymentAppHelper extends Module
         return $preOrderPaymentRequestTransfer;
     }
 
-    /**
-     * @param int $expectedResponseCode
-     * @param array|string $expectedResponseData
-     *
-     * @return void
-     */
     public function mockKernelAppFacadeResponse(int $expectedResponseCode, array|string $expectedResponseData): void
     {
         // Mock the KernelApp response
@@ -201,12 +160,6 @@ class PaymentAppHelper extends Module
         $this->getDependencyHelper()->setDependency(PaymentAppDependencyProvider::FACADE_KERNEL_APP, new PaymentAppToKernelAppFacadeBridge($kernelAppFacadeMock));
     }
 
-    /**
-     * @param string $orderReference
-     * @param string $status
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppPaymentStatusTransfer
-     */
     public function havePaymentAppPaymentStatusEntity(string $orderReference, string $status): PaymentAppPaymentStatusTransfer
     {
         $paymentAppPaymentStatusEntity = new SpyPaymentAppPaymentStatus();
@@ -221,12 +174,6 @@ class PaymentAppHelper extends Module
         return $paymentAppPaymentStatusTransfer;
     }
 
-    /**
-     * @param string $orderReference
-     * @param string $expectedStatus
-     *
-     * @return void
-     */
     public function assertPaymentAppPaymentStatusEntityExists(string $orderReference, string $expectedStatus): void
     {
         $paymentAppPaymentStatusQuery = SpyPaymentAppPaymentStatusQuery::create();
@@ -238,12 +185,6 @@ class PaymentAppHelper extends Module
         $this->assertSame($expectedStatus, $paymentAppPaymentStatusEntity->getStatus());
     }
 
-    /**
-     * @param string $orderReference
-     * @param string $expectedStatus
-     *
-     * @return void
-     */
     public function assertPaymentAppPaymentStatusHistoryEntityExists(string $orderReference, string $expectedStatus): void
     {
         $paymentAppPaymentStatusHistoryQuery = SpyPaymentAppPaymentStatusHistoryQuery::create();
@@ -266,11 +207,6 @@ class PaymentAppHelper extends Module
         $this->assertTrue($found, sprintf('Expected to find a history entity with status "%s" but it was not found.', $expectedStatus));
     }
 
-    /**
-     * @param string $orderReference
-     *
-     * @return void
-     */
     public function assertPaymentAppPaymentStatusHistoryEntityDoesNotExist(string $orderReference): void
     {
         $paymentAppPaymentStatusHistoryQuery = SpyPaymentAppPaymentStatusHistoryQuery::create();
@@ -281,12 +217,6 @@ class PaymentAppHelper extends Module
         $this->assertNull($paymentAppPaymentStatusHistoryEntityCollection, 'Did not expected to find a history entity but it was found.');
     }
 
-    /**
-     * @param string $orderReference
-     * @param string $status
-     *
-     * @return void
-     */
     public function assertPaymentAppPaymentStatusEntityDoesNotExists(string $orderReference, string $status): void
     {
         $paymentAppPaymentStatusQuery = SpyPaymentAppPaymentStatusQuery::create();

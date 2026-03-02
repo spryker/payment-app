@@ -32,9 +32,6 @@ class PaymentCancellationFailedMessageTest extends Unit
 {
     protected PaymentAppCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testGivenNoStatusEntityForAPaymentExistsWhenThePaymentCancellationFailedMessageIsHandledThenAStatusEntityIsCreated(): void
     {
         // Arrange
@@ -47,9 +44,6 @@ class PaymentCancellationFailedMessageTest extends Unit
         $this->tester->assertPaymentAppPaymentStatusEntityExists($orderReference, PaymentStatus::STATUS_CANCELLATION_FAILED);
     }
 
-    /**
-     * @return void
-     */
     public function testGivenAStatusEntityForAPaymentExistsWhenThePaymentCancellationFailedMessageIsHandledThenTheStatusEntityIsUpdated(): void
     {
         // Arrange
@@ -63,9 +57,6 @@ class PaymentCancellationFailedMessageTest extends Unit
         $this->tester->assertPaymentAppPaymentStatusEntityExists($orderReference, PaymentStatus::STATUS_CANCELLATION_FAILED);
     }
 
-    /**
-     * @return void
-     */
     public function testGivenNoStatusEntityForAPaymentExistsWhenThePaymentCancellationFailedMessageIsHandledThenAStatusHistoryEntityIsCreated(): void
     {
         // Arrange

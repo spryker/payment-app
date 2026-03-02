@@ -35,9 +35,6 @@ abstract class AbstractIsPaymentAppPaymentStatusConditionPluginTest extends Unit
      */
     abstract public static function statusProvider(): array;
 
-    /**
-     * @return \Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface
-     */
     abstract protected function getConditionPluginToTest(): ConditionInterface;
 
     /**
@@ -74,11 +71,6 @@ abstract class AbstractIsPaymentAppPaymentStatusConditionPluginTest extends Unit
         $this->assertSame($expectedConditionResult, $isConditionMet, sprintf('Expected that when the payment is in state "%s" the condition returns "%s"', $paymentStatus, $expectedConditionResult ? 'true' : 'false'));
     }
 
-    /**
-     * @param string $paymentStatus
-     *
-     * @return string
-     */
     protected function paymentStatusToCamelCase(string $paymentStatus): string
     {
         return str_replace(' ', '', ucwords(str_replace('_', ' ', strtolower($paymentStatus))));

@@ -40,9 +40,6 @@ class PaymentAppFacadeTest extends Unit
      */
     protected PaymentAppBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testProcessExpressCheckoutPaymentRequestReturnsSuccessfulResponseIfNoPluginsWereExecuted(): void
     {
         // Arrange
@@ -69,9 +66,6 @@ class PaymentAppFacadeTest extends Unit
         $this->assertSame($updatedPaymentTransfer, $expressCheckoutPaymentResponseTransfer->getQuote()->getPayments()[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testProcessExpressCheckoutPaymentRequestReturnsSuccessfulResponseIfAllPluginsWereExecutedSuccessfully(): void
     {
         // Arrange
@@ -101,9 +95,6 @@ class PaymentAppFacadeTest extends Unit
         $this->assertSame($updatedPaymentTransfer, $expressCheckoutPaymentResponseTransfer->getQuote()->getPayments()[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testProcessExpressCheckoutPaymentRequestReturnsFailedResponseIfAtLestOnePluginHasFailed(): void
     {
         // Arrange

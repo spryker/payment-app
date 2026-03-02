@@ -14,10 +14,5 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 
 interface PaymentMessageMapperInterface
 {
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $paymentAppMessageTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
-     */
     public function mapPaymentMessageTransferToPaymentAppStatusUpdatedTransfer(AbstractTransfer $paymentAppMessageTransfer): PaymentAppStatusUpdatedTransfer;
 }

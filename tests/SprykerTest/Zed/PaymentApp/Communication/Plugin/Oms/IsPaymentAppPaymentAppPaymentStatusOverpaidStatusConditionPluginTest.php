@@ -49,9 +49,6 @@ class IsPaymentAppPaymentAppPaymentStatusOverpaidStatusConditionPluginTest exten
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
     protected function getConditionPluginToTest(): ConditionInterface
     {
         return new IsPaymentAppPaymentStatusOverpaidConditionPlugin();

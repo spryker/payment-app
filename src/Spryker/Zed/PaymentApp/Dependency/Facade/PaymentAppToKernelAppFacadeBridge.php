@@ -25,11 +25,6 @@ class PaymentAppToKernelAppFacadeBridge implements PaymentAppToKernelAppFacadeIn
         $this->kernelAppFacade = $kernelAppFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AcpHttpRequestTransfer $acpHttpRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\AcpHttpResponseTransfer
-     */
     public function makeRequest(AcpHttpRequestTransfer $acpHttpRequestTransfer): AcpHttpResponseTransfer
     {
         return $this->kernelAppFacade->makeRequest($acpHttpRequestTransfer);

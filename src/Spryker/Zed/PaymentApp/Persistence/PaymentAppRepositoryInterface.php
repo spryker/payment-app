@@ -14,11 +14,6 @@ use Generated\Shared\Transfer\PaymentAppPaymentStatusCriteriaTransfer;
 
 interface PaymentAppRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAppPaymentStatusCriteriaTransfer $paymentAppPaymentStatusCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppPaymentStatusCollectionTransfer
-     */
     public function getPaymentAppPaymentStatusCollection(
         PaymentAppPaymentStatusCriteriaTransfer $paymentAppPaymentStatusCriteriaTransfer
     ): PaymentAppPaymentStatusCollectionTransfer;

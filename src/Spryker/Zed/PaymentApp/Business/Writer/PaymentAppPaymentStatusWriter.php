@@ -12,28 +12,15 @@ use Spryker\Zed\PaymentApp\Persistence\PaymentAppEntityManagerInterface;
 
 class PaymentAppPaymentStatusWriter implements PaymentAppPaymentStatusWriterInterface
 {
-    /**
-     * @param \Spryker\Zed\PaymentApp\Persistence\PaymentAppEntityManagerInterface $paymentAppEntityManager
-     */
     public function __construct(protected PaymentAppEntityManagerInterface $paymentAppEntityManager)
     {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer $paymentAppStatusUpdatedTransfer
-     *
-     * @return void
-     */
     public function persistPaymentAppPaymentStatus(PaymentAppStatusUpdatedTransfer $paymentAppStatusUpdatedTransfer): void
     {
         $this->paymentAppEntityManager->persistPaymentAppPaymentStatus($paymentAppStatusUpdatedTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer $paymentAppStatusUpdatedTransfer
-     *
-     * @return void
-     */
     public function persistPaymentAppPaymentStatusHistory(PaymentAppStatusUpdatedTransfer $paymentAppStatusUpdatedTransfer): void
     {
         $this->paymentAppEntityManager->persistPaymentAppPaymentStatusHistory($paymentAppStatusUpdatedTransfer);

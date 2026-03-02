@@ -25,11 +25,6 @@ class PaymentAppToCartFacadeBridge implements PaymentAppToCartFacadeInterface
         $this->cartFacade = $cartFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function reloadItemsInQuote(QuoteTransfer $quoteTransfer): QuoteResponseTransfer
     {
         return $this->cartFacade->reloadItemsInQuote($quoteTransfer);

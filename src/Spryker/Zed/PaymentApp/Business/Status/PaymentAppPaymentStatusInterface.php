@@ -15,18 +15,8 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 
 interface PaymentAppPaymentStatusInterface
 {
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $paymentAppMessageTransfer
-     *
-     * @return void
-     */
     public function savePaymentAppPaymentStatus(AbstractTransfer $paymentAppMessageTransfer): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAppPaymentStatusRequestTransfer $paymentAppPaymentStatusRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppPaymentStatusResponseTransfer
-     */
     public function hasPaymentAppExpectedPaymentStatus(
         PaymentAppPaymentStatusRequestTransfer $paymentAppPaymentStatusRequestTransfer
     ): PaymentAppPaymentStatusResponseTransfer;

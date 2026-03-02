@@ -28,9 +28,6 @@ class OmsFlowNewToCaptureToOverpaidTest extends Unit
 {
     protected PaymentAppIntegrationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testMoveAnItemFromNewToCaptureToPaymentOverpaidWhenPaymentAppStatesMoveFasterThanOms(): void
     {
         $this->tester->haveOrderItemInState(SalesPaymentHelper::STATE_NEW);
@@ -51,9 +48,6 @@ class OmsFlowNewToCaptureToOverpaidTest extends Unit
         $this->tester->assertOrderItemIsInState(SalesPaymentHelper::STATE_PAYMENT_OVERPAID);
     }
 
-    /**
-     * @return void
-     */
     public function testMoveAnItemFromNewToCaptureToPaymentFullyCaptured(): void
     {
         $this->tester->haveOrderItemInState(SalesPaymentHelper::STATE_NEW);

@@ -24,12 +24,6 @@ class PaymentAppPaymentStatus implements PaymentAppPaymentStatusInterface
 {
     use LoggerTrait;
 
-    /**
-     * @param \Spryker\Zed\PaymentApp\Business\Reader\PaymentAppPaymentStatusReaderInterface $paymentAppPaymentStatusReader
-     * @param \Spryker\Zed\PaymentApp\Business\Writer\PaymentAppPaymentStatusWriterInterface $paymentAppPaymentStatusWriter
-     * @param \Spryker\Zed\PaymentApp\Business\Mapper\PaymentMessageMapperInterface $paymentMessageMapper
-     * @param \Spryker\Zed\PaymentApp\Dependency\Service\PaymentAppToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         protected PaymentAppPaymentStatusReaderInterface $paymentAppPaymentStatusReader,
         protected PaymentAppPaymentStatusWriterInterface $paymentAppPaymentStatusWriter,
@@ -38,11 +32,6 @@ class PaymentAppPaymentStatus implements PaymentAppPaymentStatusInterface
     ) {
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $paymentAppMessageTransfer
-     *
-     * @return void
-     */
     public function savePaymentAppPaymentStatus(AbstractTransfer $paymentAppMessageTransfer): void
     {
         $paymentAppStatusUpdatedTransfer = $this->paymentMessageMapper
@@ -52,11 +41,6 @@ class PaymentAppPaymentStatus implements PaymentAppPaymentStatusInterface
         $this->paymentAppPaymentStatusWriter->persistPaymentAppPaymentStatusHistory($paymentAppStatusUpdatedTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentAppPaymentStatusRequestTransfer $paymentAppPaymentStatusRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppPaymentStatusResponseTransfer
-     */
     public function hasPaymentAppExpectedPaymentStatus(
         PaymentAppPaymentStatusRequestTransfer $paymentAppPaymentStatusRequestTransfer
     ): PaymentAppPaymentStatusResponseTransfer {
