@@ -16,6 +16,10 @@ use Generated\Shared\Transfer\PaymentCancellationFailedTransfer;
 use Generated\Shared\Transfer\PaymentCapturedTransfer;
 use Generated\Shared\Transfer\PaymentCaptureFailedTransfer;
 use Generated\Shared\Transfer\PaymentOverpaidTransfer;
+use Generated\Shared\Transfer\PaymentPartiallyCapturedTransfer;
+use Generated\Shared\Transfer\PaymentPartiallyRefundedTransfer;
+use Generated\Shared\Transfer\PaymentRefundedTransfer;
+use Generated\Shared\Transfer\PaymentRefundFailedTransfer;
 use Generated\Shared\Transfer\PaymentUnderpaidTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\MessageBrokerExtension\Dependency\Plugin\MessageHandlerPluginInterface;
@@ -36,7 +40,7 @@ class PaymentAppOperationsMessageHandlerPlugin extends AbstractPlugin implements
      *
      * @api
      *
-     * @return iterable
+     * @return iterable<string, callable>
      */
     public function handles(): iterable
     {
@@ -44,11 +48,15 @@ class PaymentAppOperationsMessageHandlerPlugin extends AbstractPlugin implements
             PaymentCanceledTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
             PaymentCancellationFailedTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
             PaymentCapturedTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
+            PaymentPartiallyCapturedTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
             PaymentCaptureFailedTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
             PaymentAuthorizedTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
             PaymentAuthorizationFailedTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
             PaymentOverpaidTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
             PaymentUnderpaidTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
+            PaymentRefundedTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
+            PaymentPartiallyRefundedTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
+            PaymentRefundFailedTransfer::class => [$this->getFacade(), 'savePaymentAppPaymentStatus'],
         ];
     }
 }

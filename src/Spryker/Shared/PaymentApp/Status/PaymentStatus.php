@@ -36,6 +36,8 @@ enum PaymentStatus
      */
     public const STATUS_CAPTURED = 'captured';
 
+    public const string STATUS_PARTIALLY_CAPTURED = 'partially captured';
+
     /**
      * @var string
      */
@@ -65,4 +67,10 @@ enum PaymentStatus
      * @var string
      */
     public const STATUS_UNDERPAID = 'underpaid';
+
+    public const string STATUS_REFUNDED = 'refunded';
+
+    public const string STATUS_PARTIALLY_REFUNDED = 'partially refunded';
+
+    public const string STATUS_REFUND_FAILED = 'refund failed';
 }

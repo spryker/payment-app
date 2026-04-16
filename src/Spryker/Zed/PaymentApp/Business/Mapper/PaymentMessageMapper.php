@@ -17,6 +17,10 @@ use Generated\Shared\Transfer\PaymentCancellationFailedTransfer;
 use Generated\Shared\Transfer\PaymentCapturedTransfer;
 use Generated\Shared\Transfer\PaymentCaptureFailedTransfer;
 use Generated\Shared\Transfer\PaymentOverpaidTransfer;
+use Generated\Shared\Transfer\PaymentPartiallyCapturedTransfer;
+use Generated\Shared\Transfer\PaymentPartiallyRefundedTransfer;
+use Generated\Shared\Transfer\PaymentRefundedTransfer;
+use Generated\Shared\Transfer\PaymentRefundFailedTransfer;
 use Generated\Shared\Transfer\PaymentUnderpaidTransfer;
 use InvalidArgumentException;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
@@ -25,11 +29,7 @@ use Spryker\Shared\PaymentApp\Status\PaymentStatus;
 class PaymentMessageMapper implements PaymentMessageMapperInterface
 {
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $paymentAppMessageTransfer
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return \Generated\Shared\Transfer\PaymentAppStatusUpdatedTransfer
      */
     public function mapPaymentMessageTransferToPaymentAppStatusUpdatedTransfer(AbstractTransfer $paymentAppMessageTransfer): PaymentAppStatusUpdatedTransfer
     {
@@ -37,11 +37,15 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
             PaymentAuthorizedTransfer::class => $this->mapPaymentAuthorizedToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
             PaymentAuthorizationFailedTransfer::class => $this->mapPaymentAuthorizationFailedToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
             PaymentCapturedTransfer::class => $this->mapPaymentCapturedToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
+            PaymentPartiallyCapturedTransfer::class => $this->mapPaymentPartiallyCapturedToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
             PaymentCaptureFailedTransfer::class => $this->mapPaymentCaptureFailedToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
             PaymentCanceledTransfer::class => $this->mapPaymentCanceledToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
             PaymentCancellationFailedTransfer::class => $this->mapPaymentCancellationFailedToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
             PaymentOverpaidTransfer::class => $this->mapPaymentOverpaidToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
             PaymentUnderpaidTransfer::class => $this->mapPaymentUnderpaidToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
+            PaymentRefundedTransfer::class => $this->mapPaymentRefundedToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
+            PaymentPartiallyRefundedTransfer::class => $this->mapPaymentPartiallyRefundedToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
+            PaymentRefundFailedTransfer::class => $this->mapPaymentRefundFailedToPaymentStatusUpdatedTransfer($paymentAppMessageTransfer),
             default => throw new InvalidArgumentException(sprintf('Message type %s is not supported.', get_class($paymentAppMessageTransfer))),
         };
     }
@@ -52,6 +56,7 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         return $this->createPaymentAppStatusUpdatedTransfer(
             $paymentAuthorizedTransfer->getOrderReferenceOrFail(),
             PaymentStatus::STATUS_AUTHORIZED,
+            $paymentAuthorizedTransfer->getContext(),
         );
     }
 
@@ -61,6 +66,7 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         return $this->createPaymentAppStatusUpdatedTransfer(
             $paymentAuthorizationFailedTransfer->getOrderReferenceOrFail(),
             PaymentStatus::STATUS_AUTHORIZATION_FAILED,
+            $paymentAuthorizationFailedTransfer->getContext(),
         );
     }
 
@@ -70,6 +76,17 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         return $this->createPaymentAppStatusUpdatedTransfer(
             $paymentCapturedTransfer->getOrderReferenceOrFail(),
             PaymentStatus::STATUS_CAPTURED,
+            $paymentCapturedTransfer->getContext(),
+        );
+    }
+
+    protected function mapPaymentPartiallyCapturedToPaymentStatusUpdatedTransfer(
+        PaymentPartiallyCapturedTransfer $paymentPartiallyCapturedTransfer
+    ): PaymentAppStatusUpdatedTransfer {
+        return $this->createPaymentAppStatusUpdatedTransfer(
+            $paymentPartiallyCapturedTransfer->getOrderReferenceOrFail(),
+            PaymentStatus::STATUS_PARTIALLY_CAPTURED,
+            $paymentPartiallyCapturedTransfer->getContext(),
         );
     }
 
@@ -79,6 +96,7 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         return $this->createPaymentAppStatusUpdatedTransfer(
             $paymentCaptureFailedTransfer->getOrderReferenceOrFail(),
             PaymentStatus::STATUS_CAPTURE_FAILED,
+            $paymentCaptureFailedTransfer->getContext(),
         );
     }
 
@@ -88,6 +106,7 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         return $this->createPaymentAppStatusUpdatedTransfer(
             $paymentCanceledTransfer->getOrderReferenceOrFail(),
             PaymentStatus::STATUS_CANCELED,
+            $paymentCanceledTransfer->getContext(),
         );
     }
 
@@ -97,6 +116,7 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         return $this->createPaymentAppStatusUpdatedTransfer(
             $paymentCancellationFailedTransfer->getOrderReferenceOrFail(),
             PaymentStatus::STATUS_CANCELLATION_FAILED,
+            $paymentCancellationFailedTransfer->getContext(),
         );
     }
 
@@ -106,6 +126,7 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         return $this->createPaymentAppStatusUpdatedTransfer(
             $paymentOverpaidTransfer->getOrderReferenceOrFail(),
             PaymentStatus::STATUS_OVERPAID,
+            $paymentOverpaidTransfer->getContext(),
         );
     }
 
@@ -115,16 +136,51 @@ class PaymentMessageMapper implements PaymentMessageMapperInterface
         return $this->createPaymentAppStatusUpdatedTransfer(
             $paymentUnderpaidTransfer->getOrderReferenceOrFail(),
             PaymentStatus::STATUS_UNDERPAID,
+            $paymentUnderpaidTransfer->getContext(),
         );
     }
 
-    protected function createPaymentAppStatusUpdatedTransfer(string $orderReference, string $paymentStatus): PaymentAppStatusUpdatedTransfer
-    {
+    protected function createPaymentAppStatusUpdatedTransfer(
+        string $orderReference,
+        string $paymentStatus,
+        ?string $context = null,
+    ): PaymentAppStatusUpdatedTransfer {
         $paymentAppStatusUpdatedTransfer = new PaymentAppStatusUpdatedTransfer();
         $paymentAppStatusUpdatedTransfer
             ->setOrderReference($orderReference)
-            ->setStatus($paymentStatus);
+            ->setStatus($paymentStatus)
+            ->setContext($context);
 
         return $paymentAppStatusUpdatedTransfer;
+    }
+
+    protected function mapPaymentRefundedToPaymentStatusUpdatedTransfer(
+        PaymentRefundedTransfer $paymentRefundedTransfer
+    ): PaymentAppStatusUpdatedTransfer {
+        return $this->createPaymentAppStatusUpdatedTransfer(
+            $paymentRefundedTransfer->getOrderReferenceOrFail(),
+            PaymentStatus::STATUS_REFUNDED,
+            $paymentRefundedTransfer->getContext(),
+        );
+    }
+
+    protected function mapPaymentPartiallyRefundedToPaymentStatusUpdatedTransfer(
+        PaymentPartiallyRefundedTransfer $paymentPartiallyRefundedTransfer
+    ): PaymentAppStatusUpdatedTransfer {
+        return $this->createPaymentAppStatusUpdatedTransfer(
+            $paymentPartiallyRefundedTransfer->getOrderReferenceOrFail(),
+            PaymentStatus::STATUS_PARTIALLY_REFUNDED,
+            $paymentPartiallyRefundedTransfer->getContext(),
+        );
+    }
+
+    protected function mapPaymentRefundFailedToPaymentStatusUpdatedTransfer(
+        PaymentRefundFailedTransfer $paymentRefundFailedTransfer
+    ): PaymentAppStatusUpdatedTransfer {
+        return $this->createPaymentAppStatusUpdatedTransfer(
+            $paymentRefundFailedTransfer->getOrderReferenceOrFail(),
+            PaymentStatus::STATUS_REFUND_FAILED,
+            $paymentRefundFailedTransfer->getContext(),
+        );
     }
 }

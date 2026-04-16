@@ -32,7 +32,13 @@ class PaymentAppConfig extends AbstractBundleConfig
         // Covers all cases where an order was captured before the status was reached
         PaymentStatus::STATUS_CAPTURED => [
             PaymentStatus::STATUS_CAPTURED,
+            PaymentStatus::STATUS_PARTIALLY_CAPTURED,
             PaymentStatus::STATUS_OVERPAID,
+        ],
+        // Partial refunds count as refunded for item-level OMS condition checks
+        PaymentStatus::STATUS_REFUNDED => [
+            PaymentStatus::STATUS_REFUNDED,
+            PaymentStatus::STATUS_PARTIALLY_REFUNDED,
         ],
     ];
 }

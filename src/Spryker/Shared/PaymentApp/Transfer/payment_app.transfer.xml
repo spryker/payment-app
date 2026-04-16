@@ -140,6 +140,7 @@
         <property name="orderItemIds" type="array" singular="orderItemId"/>
         <property name="amount" type="int"/>
         <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
         <property name="messageAttributes" type="MessageAttributes"/>
     </transfer>
 
@@ -148,6 +149,7 @@
         <property name="orderItemIds" type="array" singular="orderItemId"/>
         <property name="amount" type="int"/>
         <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
         <property name="messageAttributes" type="MessageAttributes"/>
     </transfer>
 
@@ -157,7 +159,16 @@
         <property name="orderItemIds" type="array" singular="orderItemId"/>
         <property name="amount" type="int"/>
         <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
         <property name="messageAttributes" type="MessageAttributes"/>
+    </transfer>
+
+    <transfer name="PaymentPartiallyCaptured">
+        <property name="orderReference" type="string"/>
+        <property name="orderItemIds" type="array" singular="orderItemId"/>
+        <property name="amount" type="int"/>
+        <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
     </transfer>
 
     <transfer name="PaymentCaptureFailed">
@@ -165,6 +176,7 @@
         <property name="orderItemIds" type="array" singular="orderItemId"/>
         <property name="amount" type="int"/>
         <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
         <property name="messageAttributes" type="MessageAttributes"/>
     </transfer>
 
@@ -174,6 +186,7 @@
         <property name="orderItemIds" type="array" singular="orderItemId"/>
         <property name="amount" type="int"/>
         <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
         <property name="messageAttributes" type="MessageAttributes"/>
     </transfer>
 
@@ -182,6 +195,7 @@
         <property name="orderItemIds" type="array" singular="orderItemId"/>
         <property name="amount" type="int"/>
         <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
         <property name="messageAttributes" type="MessageAttributes"/>
     </transfer>
 
@@ -190,6 +204,7 @@
         <property name="orderItemIds" type="array" singular="orderItemId"/>
         <property name="amount" type="int"/>
         <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
         <property name="messageAttributes" type="MessageAttributes"/>
     </transfer>
 
@@ -198,7 +213,32 @@
         <property name="orderItemIds" type="array" singular="orderItemId"/>
         <property name="amount" type="int"/>
         <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
         <property name="messageAttributes" type="MessageAttributes"/>
+    </transfer>
+
+    <transfer name="PaymentRefunded">
+        <property name="orderReference" type="string"/>
+        <property name="orderItemIds" type="array" singular="orderItemId"/>
+        <property name="amount" type="int"/>
+        <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
+    </transfer>
+
+    <transfer name="PaymentPartiallyRefunded">
+        <property name="orderReference" type="string"/>
+        <property name="orderItemIds" type="array" singular="orderItemId"/>
+        <property name="amount" type="int"/>
+        <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
+    </transfer>
+
+    <transfer name="PaymentRefundFailed">
+        <property name="orderReference" type="string"/>
+        <property name="orderItemIds" type="array" singular="orderItemId"/>
+        <property name="amount" type="int"/>
+        <property name="currencyIsoCode" type="string"/>
+        <property name="context" type="string"/>
     </transfer>
     <!-- EOF Payment Messages -->
 
