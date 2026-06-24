@@ -13,11 +13,15 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 class PaymentAppConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const PAYMENT_SERVICE_PROVIDER_ENDPOINT_NAME_CUSTOMER = 'customer';
 
     /**
+     * @api
+     *
      * @var array<string, array<string>>
      */
     public const STATUS_MAP = [
