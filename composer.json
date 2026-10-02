@@ -35,7 +35,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Spryker\\": "src/Spryker/"
+            "Spryker\\": "src/Spryker/",
+            "SprykerTest\\Shared\\PaymentApp\\Helper\\": "tests/SprykerTest/Shared/PaymentApp/Helper/",
+            "SprykerTest\\Zed\\PaymentApp\\Helper\\": "tests/SprykerTest/Zed/PaymentApp/_support/Helper/"
         }
     },
     "autoload-dev": {
